@@ -1,13 +1,15 @@
 "use strict";
 
-var crypto = require('crypto');
+import crypto from 'crypto';
 
-exports.createCipherivImpl = crypto.createCipheriv;
+const createCipherivImpl = crypto.createCipheriv;
 
-exports.updateImpl = function(buffer, cipher) {
+const updateImpl = function(buffer, cipher) {
   return cipher.update(buffer);
 }
 
-exports.finalImpl = function(cipher) {
+const finalImpl = function(cipher) {
   return cipher.final();
 }
+
+export {createCipherivImpl, updateImpl, finalImpl}

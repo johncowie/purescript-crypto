@@ -1,13 +1,15 @@
 "use strict";
 
-var crypto = require('crypto');
+import crypto from 'crypto';
 
-exports.createHashImpl = crypto.createHash;
+const createHashImpl = crypto.createHash;
 
-exports.updateImpl = function(buffer, hash) {
+const updateImpl = function(buffer, hash) {
   return hash.update(buffer);
 }
 
-exports.digestImpl = function(hash) {
+const digestImpl = function(hash) {
   return hash.digest();
 }
+
+export {createHashImpl, updateImpl, digestImpl};

@@ -1,12 +1,12 @@
 "use strict";
 
-var crypto = require('crypto');
+import crypto = from 'crypto';
 
-exports.timingSafeEqualImpl = crypto.timingSafeEqual;
+const timingSafeEqualImpl = crypto.timingSafeEqual;
 
-exports.randomBytesImpl = crypto.randomBytes;
+const randomBytesImpl = crypto.randomBytes;
 
-exports.scryptImpl = function(password, salt, keylen) {
+const scryptImpl = function(password, salt, keylen) {
   return function(onError, onSuccess) {
     crypto.scrypt(password, salt, keylen, function(err, key) {
       if (err) {
@@ -21,4 +21,6 @@ exports.scryptImpl = function(password, salt, keylen) {
   }
 }
 
-exports.scryptSyncImpl = crypto.scryptSync;
+const scryptSyncImpl = crypto.scryptSync;
+
+export {timingSafeEqualImpl, randomBytesImpl, scryptImpl, scryptSyncImpl}
